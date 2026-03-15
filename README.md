@@ -1,24 +1,24 @@
-# ELAN Compiler 🚀
+# ElanNest Compiler 🚀
 
-**ELAN — Build the Future**
+**ElanNest — Build the Future**
 
-The **ELAN Compiler** is the official compiler for the **ELAN Programming Language**.
-ELAN is designed to be a **modern, simple, and powerful programming language** for developers worldwide.
+The **ElanNest Compiler** is the official compiler for the **ElanNest Programming Language**.
+ElanNest is designed to be a **modern, simple, and powerful programming language** for developers worldwide.
 
-File extension: **`.el`**
+File extension: **`.en`**
 
 ---
 
 # Creators
 
-**Elancheran C G**
+**Elancheran C G**  
 **Elandhiraiyan C G**
 
 ---
 
-# What is ELAN?
+# What is ElanNest?
 
-ELAN is a programming language created to make development:
+ElanNest is a programming language created to make development:
 
 • Simple
 • Fast
@@ -32,7 +32,7 @@ It includes a **compiler, runtime, package manager, and IDE**.
 
 # Example Program
 
-hello.el
+hello.en
 
 ```
 fn main {
@@ -45,7 +45,7 @@ fn main {
 Run program:
 
 ```
-elan run hello.el
+elannest run hello.en
 ```
 
 Output:
@@ -58,7 +58,7 @@ Hello, World!
 
 # Installation
 
-Download the ELAN compiler from the official website.
+Download the ElanNest compiler from the official website.
 
 Official website:
 
@@ -71,40 +71,40 @@ https://elan-lang-dev.github.io
 Compile program
 
 ```
-elan compile file.el
+elannest compile file.en
 ```
 
 Run program
 
 ```
-elan run file.el
+elannest run file.en
 ```
 
 Install library
 
 ```
-elan install libraryname
+elannest install libraryname
 ```
 
 Update libraries
 
 ```
-elan update
+elannest update
 ```
 
 Check version
 
 ```
-elan version
+elannest version
 ```
 
 ---
 
 # Compiler Architecture
 
-The ELAN compiler works in several stages.
+The ElanNest compiler works in several stages.
 
-Source Code (.el)
+Source Code (.en)
 
 ↓
 
@@ -161,34 +161,34 @@ docs
 
 # Standard Libraries
 
-ELAN provides many built-in libraries.
+ElanNest provides many built-in libraries.
 
 Examples:
 
-• elanmath
-• elansys
-• elanweb
-• elandb
-• elannet
-• elangraphics
-• elanvision
-• elanocr
-• elanaudio
-• elanai
+• elannestmath
+• elannestsys
+• elannestweb
+• elannestdb
+• elannestnet
+• elannestgraphics
+• elannestvision
+• elannestocr
+• elannestaudio
+• elannestai
 
 Libraries can be installed using the package manager.
 
 Example:
 
 ```
-elan install elanvision
+elannest install elannestvision
 ```
 
 ---
 
 # ElanNest IDE
 
-ELAN includes an official IDE called **ElanNest**.
+ElanNest includes an official IDE called **ElanNest**.
 
 Features:
 
@@ -201,7 +201,7 @@ Features:
 
 ---
 
-# Goals of ELAN
+# Goals of ElanNest
 
 Create a language that is:
 
@@ -236,7 +236,7 @@ See the `LICENSE` file for details.
 
 # Name Protection
 
-The name **ELAN Programming Language** and its branding are owned by:
+The name **ElanNest Programming Language** and its branding are owned by:
 
 Elancheran C G
 Elandhiraiyan C G
@@ -245,9 +245,9 @@ Permission is granted to use and modify the source code under the MIT License.
 
 However:
 
-• Modified versions must **not** be released using the name **ELAN**.
+• Modified versions must **not** be released using the name **ElanNest**.
 • Forks or derivative works must use a **different name**.
-• The ELAN name and logo cannot be used without permission.
+• The ElanNest name and logo cannot be used without permission.
 
 ---
 
@@ -259,4 +259,4 @@ https://github.com/elan-lang-dev/elan-compiler
 
 # Tagline
 
-**ELAN — Build the Future**
+**ElanNest — Build the Future**

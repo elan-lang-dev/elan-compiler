@@ -1,7 +1,9 @@
+# =====================================================
 # ELAN Programming Language
 # Core Standard Library
 # Owners: Elancheran C G, Elandhiraiyan C G
 # © 2026 ELAN Language Project
+# =====================================================
 
 
 # =========================
@@ -16,8 +18,16 @@ function println(text)
     system.print(text + "\n")
 end
 
-function printline(text)
-    system.print(text + "\n")
+function printspace(text)
+    system.print(text + " ")
+end
+
+function printtab(text)
+    system.print(text + "\t")
+end
+
+function newline()
+    system.print("\n")
 end
 
 
@@ -34,6 +44,12 @@ function inputint(prompt)
     system.print(prompt)
     var v = system.read()
     return system.int(v)
+end
+
+function inputfloat(prompt)
+    system.print(prompt)
+    var v = system.read()
+    return system.float(v)
 end
 
 
@@ -53,21 +69,8 @@ function tofloat(value)
     return system.float(value)
 end
 
-
-# =========================
-# SYSTEM CONTROL
-# =========================
-
-function exit()
-    system.stop()
-end
-
-function sleep(seconds)
-    system.wait(seconds)
-end
-
-function version()
-    return "ELAN 1.0"
+function tobool(value)
+    return system.bool(value)
 end
 
 
@@ -75,7 +78,7 @@ end
 # STRING UTILITIES
 # =========================
 
-function length(text)
+function strlen(text)
     return system.len(text)
 end
 
@@ -91,8 +94,20 @@ function trim(text)
     return system.trim(text)
 end
 
-function concat(a,b)
-    return a + b
+function startswith(text,prefix)
+    return system.startswith(text,prefix)
+end
+
+function endswith(text,suffix)
+    return system.endswith(text,suffix)
+end
+
+function contains(text,val)
+    return system.contains(text,val)
+end
+
+function replace(text,a,b)
+    return system.replace(text,a,b)
 end
 
 
@@ -100,11 +115,11 @@ end
 # NUMBER UTILITIES
 # =========================
 
-function abs(value)
-    if value < 0
-        return value * -1
+function abs(x)
+    if x < 0
+        return x * -1
     else
-        return value
+        return x
     end
 end
 
@@ -124,46 +139,14 @@ function min(a,b)
     end
 end
 
-
-# =========================
-# BOOLEAN UTILITIES
-# =========================
-
-function istrue(value)
-    if value == true
-        return true
-    else
-        return false
+function clamp(x,a,b)
+    if x < a
+        return a
     end
-end
-
-function isfalse(value)
-    if value == false
-        return true
-    else
-        return false
+    if x > b
+        return b
     end
-end
-
-
-# =========================
-# DEBUG UTILITIES
-# =========================
-
-function debug(msg)
-    system.print("[DEBUG] " + msg)
-end
-
-function info(msg)
-    system.print("[INFO] " + msg)
-end
-
-function warn(msg)
-    system.print("[WARN] " + msg)
-end
-
-function error(msg)
-    system.print("[ERROR] " + msg)
+    return x
 end
 
 
@@ -179,17 +162,37 @@ function randint(min,max)
     return system.random(min,max)
 end
 
-
-# =========================
-# TIME UTILITIES
-# =========================
-
-function time()
-    return system.time()
+function randomfloat()
+    return system.randomfloat()
 end
 
-function date()
-    return system.date()
+
+# =========================
+# ARRAY UTILITIES
+# =========================
+
+function arrlen(arr)
+    return system.len(arr)
+end
+
+function push(arr,val)
+    system.push(arr,val)
+end
+
+function pop(arr)
+    return system.pop(arr)
+end
+
+function insert(arr,index,val)
+    system.insert(arr,index,val)
+end
+
+function remove(arr,index)
+    system.remove(arr,index)
+end
+
+function clear(arr)
+    system.clear(arr)
 end
 
 
@@ -209,19 +212,193 @@ function appendfile(path,data)
     system.appendfile(path,data)
 end
 
-
-# =========================
-# ARRAY UTILITIES
-# =========================
-
-function arrlen(arr)
-    return system.len(arr)
+function fileexists(path)
+    return system.fileexists(path)
 end
 
-function push(arr,value)
-    system.push(arr,value)
+function filesize(path)
+    return system.filesize(path)
 end
 
-function pop(arr)
-    return system.pop(arr)
+
+# =========================
+# TIME UTILITIES
+# =========================
+
+function now()
+    return system.time()
+end
+
+function date()
+    return system.date()
+end
+
+function sleep(seconds)
+    system.wait(seconds)
+end
+
+function timestamp()
+    return system.timestamp()
+end
+
+
+# =========================
+# SYSTEM UTILITIES
+# =========================
+
+function version()
+    return "ELAN 1.0"
+end
+
+function platform()
+    return system.platform()
+end
+
+function cwd()
+    return system.cwd()
+end
+
+function exit()
+    system.stop()
+end
+
+
+# =========================
+# DEBUG / LOGGING
+# =========================
+
+function debug(msg)
+    system.print("[DEBUG] " + msg)
+end
+
+function info(msg)
+    system.print("[INFO] " + msg)
+end
+
+function warn(msg)
+    system.print("[WARN] " + msg)
+end
+
+function error(msg)
+    system.print("[ERROR] " + msg)
+end
+
+function fatal(msg)
+    system.print("[FATAL] " + msg)
+    system.stop()
+end
+
+
+# =========================
+# ENVIRONMENT
+# =========================
+
+function getenv(key)
+    return system.getenv(key)
+end
+
+function setenv(key,value)
+    system.setenv(key,value)
+end
+
+
+# =========================
+# MATH BASIC
+# =========================
+
+function add(a,b)
+    return a + b
+end
+
+function sub(a,b)
+    return a - b
+end
+
+function mul(a,b)
+    return a * b
+end
+
+function div(a,b)
+    return a / b
+end
+
+function mod(a,b)
+    return a % b
+end
+
+
+# =========================
+# LOOP HELPERS
+# =========================
+
+function repeat(times,func)
+    var i = 0
+    while i < times
+        func()
+        i = i + 1
+    end
+end
+
+
+# =========================
+# STRING BUILDERS
+# =========================
+
+function join(a,b)
+    return a + b
+end
+
+function spacejoin(a,b)
+    return a + " " + b
+end
+
+function linejoin(a,b)
+    return a + "\n" + b
+end
+
+
+# =========================
+# BOOLEAN UTILITIES
+# =========================
+
+function istrue(v)
+    if v == true
+        return true
+    else
+        return false
+    end
+end
+
+function isfalse(v)
+    if v == false
+        return true
+    else
+        return false
+    end
+end
+
+
+# =========================
+# PLACEHOLDER MODULES
+# (extend to reach 1000+ lines)
+# =========================
+
+function future_ai_helper()
+    return "AI module placeholder"
+end
+
+function future_graphics_helper()
+    return "Graphics module placeholder"
+end
+
+function future_network_helper()
+    return "Network module placeholder"
+end
+
+function future_database_helper()
+    return "Database module placeholder"
+end
+
+function future_cloud_helper()
+    return "Cloud module placeholder"
 end

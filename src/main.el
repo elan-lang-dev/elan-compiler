@@ -1,27 +1,201 @@
-# ELAN Compiler Entry Point
-# Owner: Elancheran C G
+# =====================================================
+# ELAN Programming Language
+# Main Entry File
+# Owners: Elancheran C G, Elandhiraiyan C G
+# =====================================================
 
-import lexer
-import parser
-import compiler
-import runtime
+use elancore
+
+
+# ----------------------------------
+# VERSION
+# ----------------------------------
+
+var ELAN_VERSION = "1.0.0"
+
+
+# ----------------------------------
+# PROGRAM START
+# ----------------------------------
 
 function main()
 
-    pri("ELAN Compiler Starting...")
+    var args = system.args()
 
-    var file = input("Enter .el file to run: ")
+    if arrlen(args) == 0
+        showhelp()
+        return
+    end
 
-    var source = runtime.read_file(file)
+    var cmd = args[0]
 
-    var tokens = lexer.tokenize(source)
+    if cmd == "run"
+        runfile(args[1])
+    end
 
-    var ast = parser.parse(tokens)
+    if cmd == "repl"
+        repl()
+    end
 
-    var program = compiler.compile(ast)
+    if cmd == "install"
+        installpkg(args[1])
+    end
 
-    runtime.execute(program)
+    if cmd == "version"
+        pri("ELAN Version " + ELAN_VERSION)
+    end
+
+    if cmd == "help"
+        showhelp()
+    end
 
 end
+
+
+# ----------------------------------
+# HELP MENU
+# ----------------------------------
+
+function showhelp()
+
+    pri("ELAN Programming Language")
+    pri("---------------------------")
+    pri("Commands:")
+    pri("  elan run <file.el>")
+    pri("  elan repl")
+    pri("  elan install <package>")
+    pri("  elan version")
+    pri("  elan help")
+
+end
+
+
+# ----------------------------------
+# RUN FILE
+# ----------------------------------
+
+function runfile(path)
+
+    if fileexists(path) == false
+        error("File not found: " + path)
+        return
+    end
+
+    var code = readfile(path)
+
+    var tokens = tokenize(code)
+
+    var ast = parse(tokens)
+
+    execute(ast)
+
+end
+
+
+# ----------------------------------
+# TOKENIZER
+# ----------------------------------
+
+function tokenize(code)
+
+    var tokens = system.split(code," ")
+
+    return tokens
+
+end
+
+
+# ----------------------------------
+# PARSER
+# ----------------------------------
+
+function parse(tokens)
+
+    var ast = tokens
+
+    return ast
+
+end
+
+
+# ----------------------------------
+# EXECUTION ENGINE
+# ----------------------------------
+
+function execute(ast)
+
+    var i = 0
+
+    while i < arrlen(ast)
+
+        var cmd = ast[i]
+
+        if cmd == "pri"
+
+            var msg = ast[i+1]
+
+            system.print(msg)
+
+            i = i + 2
+
+        else
+
+            i = i + 1
+
+        end
+
+    end
+
+end
+
+
+# ----------------------------------
+# PACKAGE INSTALLER
+# ----------------------------------
+
+function installpkg(name)
+
+    pri("Installing package: " + name)
+
+    var url = "https://elan-packages.org/" + name
+
+    system.download(url)
+
+    pri("Package installed.")
+
+end
+
+
+# ----------------------------------
+# REPL
+# ----------------------------------
+
+function repl()
+
+    pri("ELAN Interactive Shell")
+    pri("Type 'exit' to quit")
+
+    while true
+
+        var line = input(">>> ")
+
+        if line == "exit"
+            break
+        end
+
+        var tokens = tokenize(line)
+
+        var ast = parse(tokens)
+
+        execute(ast)
+
+    end
+
+end
+
+
+# ----------------------------------
+# START PROGRAM
+# ----------------------------------
 
 main()

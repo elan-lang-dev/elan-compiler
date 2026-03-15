@@ -1,13 +1,44 @@
-module elancore
+# ELAN Core Standard Library
+# Owner: Elancheran C G
 
-fn print_line text {
+# print text
+function pri(text)
+    system.print(text)
+end
 
-    print text
 
-}
+# print with newline
+function println(text)
+    system.print(text + "\n")
+end
 
-fn input_text {
 
-    read
+# user input
+function input(prompt)
+    system.print(prompt)
+    return system.read()
+end
 
-}
+
+# convert to number
+function toint(value)
+    return system.int(value)
+end
+
+
+# convert to string
+function tostring(value)
+    return system.string(value)
+end
+
+
+# program exit
+function exit()
+    system.stop()
+end
+
+
+# simple delay
+function sleep(seconds)
+    system.wait(seconds)
+end
